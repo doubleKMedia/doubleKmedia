@@ -1,0 +1,85 @@
+article.about {
+  position: absolute;
+
+  left: 0;
+  top: 100vh;
+  width: 100%;
+
+  box-sizing: border-box;
+}
+
+article.about section.about-1 {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  top: 0;
+  width: 100%;
+  height: 600px;
+}
+
+article.about section.about-1 .background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: url('../img/about-1.png');
+  background-position: 50% 50%;
+  background-size: cover;
+
+  z-index: 0;
+}
+
+article.about .about-1 span {
+  left: 50%;
+  top: 50%;
+
+  color: aliceblue;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 70px;
+
+  z-index: 1;
+}
+
+article.about section.about-2 {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  top: 700px;
+  width: 100%;
+  height: 600px;
+}
+
+article.about section.about-2 .background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: url('../img/about-2.png');
+  background-position: 50% 50%;
+  background-size: cover;
+
+  z-index: 0;
+}
+
+article.about .about-2 span {
+  left: 50%;
+  top: 50%;
+
+  color: aliceblue;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 70px;
+
+  z-index: 1;
+}
