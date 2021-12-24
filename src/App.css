@@ -1,3 +1,20 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: Raleway;
+  src: url('./fonts/Raleway/Raleway-VariableFont_wght.ttf') format('truetype');
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+button {
+  border: none;
+  background: none;
+  padding: 0 0;
+  cursor: pointer;
+}
+
+:root::-webkit-scrollbar {
+  width: 0;
 }
