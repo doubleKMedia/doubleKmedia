@@ -29,8 +29,9 @@ const Contact = () => {
       map: map,
       title: '더블케이미디어',
       icon: {
-        url: '../img/marker.png',
+        url: 'http://static.naver.com/maps2/icons/pin_spot2.png',
       },
+      animation: naver.maps.Animation.BOUNCE,
     });
   };
 

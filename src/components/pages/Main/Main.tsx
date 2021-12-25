@@ -50,7 +50,6 @@ const Navigator = () => {
       <button onClick={goScroll.about}>about</button>
       <button onClick={goScroll.service}>service</button>
       <button>work</button>
-      <button>center</button>
       <button onClick={goScroll.contact}>contact</button>
     </nav>
   );
