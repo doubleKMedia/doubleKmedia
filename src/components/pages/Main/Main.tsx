@@ -1,10 +1,12 @@
 import './Main.css';
 import About from './articles/About';
-import Service from './articles/Service';
+import Service, { servicePositionAtom } from './articles/Service';
+import FooterInfo from './articles/FooterInfo';
 import { atom, useRecoilValue, useSetRecoilState } from 'recoil';
 import { createRef, useEffect, useState } from 'react';
+import DivideContents from '../../common/DivideContents';
 
-const scrollYAtom = atom({ key: 'scrollY', default: 0 });
+export const scrollYAtom = atom({ key: 'scrollY', default: 0 });
 
 const Header = () => {
   return (
@@ -22,25 +24,65 @@ const Navigator = () => {
   const [navOffset, setNavOffset] = useState(0);
   const scrollY = useRecoilValue(scrollYAtom);
   const nav = createRef<HTMLElement>();
+  const servicePosition = useRecoilValue(servicePositionAtom);
 
   useEffect(() => {
     setNavOffset(nav.current?.offsetTop as number);
   }, []);
 
   useEffect(() => {
-    if (navOffset < scrollY) setIsTop(true);
-    else setIsTop(false);
+    if (navOffset < scrollY && isTop === false) setIsTop(true);
+    else if (navOffset > scrollY && isTop === true) setIsTop(false);
   }, [scrollY]);
+
+  const goScroll = {
+    home: () => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }),
+    about: () => window.scrollTo({ top: navOffset, left: 0, behavior: 'smooth' }),
+    service: () => window.scrollTo({ top: servicePosition - (nav.current?.offsetHeight as number), left: 0, behavior: 'smooth' }),
+  };
 
   return (
     <nav className={`${isTop ? 'fixed' : ''}`} ref={nav}>
-      <button>home</button>
-      <button>service</button>
-      <button>about</button>
+      <button onClick={goScroll.home}>home</button>
+      <button onClick={goScroll.about}>about</button>
+      <button onClick={goScroll.service}>service</button>
       <button>work</button>
       <button>center</button>
       <button>contact</button>
     </nav>
+  );
+};
+
+const Footer = () => {
+  const [OpenInfo, setOpenInfo] = useState(<></>);
+
+  const closeModal = () => {
+    setOpenInfo(<></>);
+  };
+
+  const popTermsOfUse = () => {
+    setOpenInfo(FooterInfo.TermsOfUse({ close: closeModal }));
+  };
+
+  const popPrivacyPolicy = () => {
+    setOpenInfo(FooterInfo.PrivacyPolicy({ close: closeModal }));
+  };
+
+  return (
+    <footer>
+      더블케이미디어
+      <br />
+      주소 : 경기도 수원시 팔달구 인계동 1035-6 스마트타워 17층 1704호
+      <br />
+      <br />
+      <button className="infomation" onClick={popTermsOfUse}>
+        이용약관
+      </button>
+      <button className="infomation" onClick={popPrivacyPolicy}>
+        개인정보처리방침
+      </button>
+      {OpenInfo}
+    </footer>
   );
 };
 
@@ -65,7 +107,10 @@ const Main = () => {
       <Header />
       <Navigator />
       <About />
+      <DivideContents />
       <Service />
+      <DivideContents />
+      <Footer />
     </div>
   );
 };

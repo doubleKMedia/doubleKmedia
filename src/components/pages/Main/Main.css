@@ -6,6 +6,8 @@
 
   width: 100%;
   height: 100%;
+
+  overflow: hidden;
 }
 
 .main .background-img {
@@ -68,4 +70,29 @@
   font-size: 25px;
   font-weight: bold;
   color: aliceblue;
+}
+
+.main footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+
+  color: aliceblue;
+  font-size: 15px;
+  line-height: 30px;
+  text-align: center;
+
+  box-sizing: border-box;
+  padding: 0 20px;
+
+  background: rgba(0, 0, 0, 0.8);
+  padding: 40px;
+}
+
+.main footer button {
+  color: aliceblue;
+  margin: 5px 0px;
 }

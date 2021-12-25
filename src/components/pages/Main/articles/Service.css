@@ -1,12 +1,11 @@
 article.service {
-  position: absolute;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   left: 0;
-  top: 2500px;
   width: 100%;
 
   box-sizing: border-box;
@@ -22,22 +21,34 @@ article.service .background {
 
   background-image: url('../img/service.png');
   background-size: cover;
+  background-position: 50% 50%;
+  filter: blur(1px) brightness(0.8);
+
   z-index: 0;
 }
 
-article.service span {
+article.service .ment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 600px;
+}
+
+article.service .ment span {
   position: relative;
+
   color: antiquewhite;
   font-size: 25px;
   font-weight: bold;
+  line-height: 50px;
+
   z-index: 1;
 }
 
 article.service section {
-  z-index: 1;
-}
-
-article.service section.advertising {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,4 +58,94 @@ article.service section.advertising {
 
   background: rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
+
+  padding: 5px 0px;
+  z-index: 1;
+  cursor: pointer;
+  transition: background 0.3s linear;
+}
+
+article.service section:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+article.service section .title {
+  color: aliceblue;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 50px;
+  text-align: center;
+
+  border-bottom: 2px solid rgb(161, 161, 161);
+}
+
+article.service section .description {
+  color: antiquewhite;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 0px;
+  text-align: center;
+
+  max-width: 60vw;
+
+  opacity: 0;
+  transform: translateY(-40px);
+  transition: margin 0.5s ease, line-height 0.5s ease, opacity 0.3s ease, transform 0.5s ease;
+}
+
+article.service section .description em {
+  color: rgb(253, 198, 255);
+}
+
+article.service section .description strong {
+  font-size: 20px;
+  color: rgb(190, 255, 190);
+}
+
+article.service section:hover .description,
+article.service section.open .description {
+  line-height: 30px;
+  margin: 20px 0;
+  opacity: 1;
+  transform: none;
+}
+
+article.service section .list {
+  color: azure;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 0px;
+  text-align: center;
+
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: line-hegiht 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
+}
+
+article.service section.open .list {
+  line-height: 50px;
+  opacity: 1;
+  transform: none;
+}
+
+article.service section .list .content {
+  width: 80vw;
+
+  color: rgb(200, 200, 200);
+  font-size: 0.8em;
+  line-height: 0px;
+
+  opacity: 0;
+  transition: line-height 0.5s ease, margin-bottom 0.5s ease, opacity 0.5s ease;
+}
+
+article.service section.open .list .content {
+  line-height: normal;
+  margin-bottom: 30px;
+  opacity: 1;
+}
+
+article.service section.sns-marketing,
+article.service section.online-homepage {
+  cursor: auto;
 }

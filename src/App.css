@@ -15,6 +15,15 @@ button {
   cursor: pointer;
 }
 
+img {
+  -webkit-user-drag: none;
+}
+
+div,
+span {
+  user-select: none;
+}
+
 :root::-webkit-scrollbar {
-  width: 0;
+  display: none;
 }

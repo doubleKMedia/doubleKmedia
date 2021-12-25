@@ -1,0 +1,59 @@
+.main footer .modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  left: 0;
+  top: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 11;
+}
+
+.main footer .modal .outter {
+  position: fixed;
+
+  left: 0;
+  top: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 12;
+}
+
+.main footer .modal .content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 60vw;
+  height: 80vh;
+
+  color: black;
+  background-color: aliceblue;
+
+  border-radius: 20px;
+
+  z-index: 13;
+  overflow-y: scroll;
+}
+
+.main footer .modal .content .head {
+  color: black;
+  font-size: 20px;
+  margin: 20px 0;
+}
+
+.main footer .modal .content .body {
+  width: 90%;
+
+  font-size: 12px;
+  text-align: left;
+}
