@@ -1,5 +1,6 @@
 import { createRef, useEffect, useState } from 'react';
-import { atom, useSetRecoilState } from 'recoil';
+import { atom, useRecoilValue, useSetRecoilState } from 'recoil';
+import { scrollYAtom } from '../Main';
 import './Service.css';
 
 const Advertising = () => {
@@ -12,7 +13,7 @@ const Advertising = () => {
 
   return (
     <section className={`advertising ${isOpen ? 'open' : ''}`} onClick={onClick}>
-      <div className="title">advertising business (광고대행)</div>
+      <div className="title">advertising business (광고대행) ▾</div>
       <div className="description">
         네이버, 카카오, 구글&유튜브, 오픈마켓(쿠팡, 11번가, 위메프, 옥션 등) 등의 광고를 집행하는 광고주들의 온/오프라인 광고를 대행하여 진행합니다.
       </div>
@@ -83,7 +84,7 @@ const ViralMarketing = () => {
 
   return (
     <section className={`viral-marketing ${isOpen ? 'open' : ''}`} onClick={onClick}>
-      <div className="title">바이럴 마케팅</div>
+      <div className="title">바이럴 마케팅 ▾</div>
       <div className="description">
         바이럴 마케팅은 바이러스가 전염되듯이 소비자들 사이에서 소문을 타고, 물건 또는 브랜드에 대한 홍보성 정보가 끊임없이 전달되는 마케팅
         기법입니다.
@@ -130,7 +131,7 @@ const CPAandDBmarketing = () => {
 
   return (
     <section className={`cpa-db-marketing ${isOpen ? 'open' : ''}`} onClick={onClick}>
-      <div className="title">CPA & DB 마케팅</div>
+      <div className="title">CPA & DB 마케팅 ▾</div>
       <div className="description">CPA 마케팅이란 목표 타겟(Target)이 광고주가 원하는 행동을 할 때만 광고비를 지급하는 마케팅 방식입니다.</div>
       <div className="description">
         DB 마케팅이란 개인 별 맞춤화 된 서비스를 제공하기 위한 마케팅을 목적으로 정보를 수집하고 그 데이터를 기반으로 진행하는 마케팅 전략입니다.
@@ -169,15 +170,24 @@ const Contents = () => {
 export const servicePositionAtom = atom({ key: 'servicePosition', default: 0 });
 
 const Service = () => {
+  const [isPop, setIsPop] = useState(false);
   const setServicePosition = useSetRecoilState(servicePositionAtom);
+  const scrollY = useRecoilValue(scrollYAtom);
   const serviceRef = createRef<HTMLElement>();
 
   useEffect(() => {
     setServicePosition(serviceRef.current?.offsetTop as number);
   }, []);
 
+  useEffect(() => {
+    const isVisible = (serviceRef.current?.getBoundingClientRect().top as number) < window.innerHeight * 0.9;
+
+    if (isVisible && !isPop) setIsPop(true);
+    else if (!isVisible && isPop) setIsPop(false);
+  }, [scrollY]);
+
   return (
-    <article className="service" ref={serviceRef}>
+    <article className={`service ${isPop ? 'pop' : 'hide'}`} ref={serviceRef}>
       <div className="background" />
       <div className="ment">
         <span>"더블케이미디어는</span>

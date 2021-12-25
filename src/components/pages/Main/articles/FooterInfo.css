@@ -10,7 +10,7 @@
   width: 100vw;
   height: 100vh;
 
-  z-index: 11;
+  z-index: 101;
 }
 
 .main footer .modal .outter {
@@ -23,7 +23,7 @@
   height: 100vh;
 
   background: rgba(0, 0, 0, 0.6);
-  z-index: 12;
+  z-index: 102;
 }
 
 .main footer .modal .content {
@@ -41,7 +41,7 @@
 
   border-radius: 20px;
 
-  z-index: 13;
+  z-index: 103;
   overflow-y: scroll;
 }
 

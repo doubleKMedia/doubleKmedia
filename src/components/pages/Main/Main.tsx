@@ -5,6 +5,7 @@ import FooterInfo from './articles/FooterInfo';
 import { atom, useRecoilValue, useSetRecoilState } from 'recoil';
 import { createRef, useEffect, useState } from 'react';
 import DivideContents from '../../common/DivideContents';
+import Contact, { contactPositionAtom } from './articles/Contact';
 
 export const scrollYAtom = atom({ key: 'scrollY', default: 0 });
 
@@ -25,20 +26,22 @@ const Navigator = () => {
   const scrollY = useRecoilValue(scrollYAtom);
   const nav = createRef<HTMLElement>();
   const servicePosition = useRecoilValue(servicePositionAtom);
+  const contactPosition = useRecoilValue(contactPositionAtom);
 
   useEffect(() => {
     setNavOffset(nav.current?.offsetTop as number);
   }, []);
 
   useEffect(() => {
-    if (navOffset < scrollY && isTop === false) setIsTop(true);
-    else if (navOffset > scrollY && isTop === true) setIsTop(false);
+    if (navOffset < scrollY && !isTop) setIsTop(true);
+    else if (navOffset > scrollY && isTop) setIsTop(false);
   }, [scrollY]);
 
   const goScroll = {
     home: () => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }),
     about: () => window.scrollTo({ top: navOffset, left: 0, behavior: 'smooth' }),
-    service: () => window.scrollTo({ top: servicePosition - (nav.current?.offsetHeight as number), left: 0, behavior: 'smooth' }),
+    service: () => window.scrollTo({ top: servicePosition - (nav.current?.offsetHeight as number) * 2, left: 0, behavior: 'smooth' }),
+    contact: () => window.scrollTo({ top: contactPosition - (nav.current?.offsetHeight as number) * 2, left: 0, behavior: 'smooth' }),
   };
 
   return (
@@ -48,7 +51,7 @@ const Navigator = () => {
       <button onClick={goScroll.service}>service</button>
       <button>work</button>
       <button>center</button>
-      <button>contact</button>
+      <button onClick={goScroll.contact}>contact</button>
     </nav>
   );
 };
@@ -57,14 +60,17 @@ const Footer = () => {
   const [OpenInfo, setOpenInfo] = useState(<></>);
 
   const closeModal = () => {
+    document.body.style.overflow = 'unset';
     setOpenInfo(<></>);
   };
 
   const popTermsOfUse = () => {
+    document.body.style.overflow = 'hidden';
     setOpenInfo(FooterInfo.TermsOfUse({ close: closeModal }));
   };
 
   const popPrivacyPolicy = () => {
+    document.body.style.overflow = 'hidden';
     setOpenInfo(FooterInfo.PrivacyPolicy({ close: closeModal }));
   };
 
@@ -109,6 +115,8 @@ const Main = () => {
       <About />
       <DivideContents />
       <Service />
+      <DivideContents height={200} />
+      <Contact />
       <DivideContents />
       <Footer />
     </div>
