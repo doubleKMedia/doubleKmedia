@@ -1,5 +1,5 @@
 import './Main.css';
-import About from './articles/About';
+import About, { aboutPositionAtom } from './articles/About';
 import Service, { servicePositionAtom } from './articles/Service';
 import FooterInfo from './articles/FooterInfo';
 import { atom, useRecoilValue, useSetRecoilState } from 'recoil';
@@ -23,13 +23,16 @@ const Header = () => {
 const Navigator = () => {
   const [isTop, setIsTop] = useState(false);
   const [navOffset, setNavOffset] = useState(0);
+  const [navHeight, setNavHeight] = useState(0);
   const scrollY = useRecoilValue(scrollYAtom);
   const nav = createRef<HTMLElement>();
+  const aboutPosition = useRecoilValue(aboutPositionAtom);
   const servicePosition = useRecoilValue(servicePositionAtom);
   const contactPosition = useRecoilValue(contactPositionAtom);
 
   useEffect(() => {
     setNavOffset(nav.current?.offsetTop as number);
+    setNavHeight(window.innerWidth > 600 ? (nav.current?.offsetHeight as number) : 0);
   }, []);
 
   useEffect(() => {
@@ -39,9 +42,9 @@ const Navigator = () => {
 
   const goScroll = {
     home: () => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }),
-    about: () => window.scrollTo({ top: navOffset, left: 0, behavior: 'smooth' }),
-    service: () => window.scrollTo({ top: servicePosition - (nav.current?.offsetHeight as number) * 2, left: 0, behavior: 'smooth' }),
-    contact: () => window.scrollTo({ top: contactPosition - (nav.current?.offsetHeight as number) * 2, left: 0, behavior: 'smooth' }),
+    about: () => window.scrollTo({ top: aboutPosition - navHeight, left: 0, behavior: 'smooth' }),
+    service: () => window.scrollTo({ top: servicePosition - navHeight * 2, left: 0, behavior: 'smooth' }),
+    contact: () => window.scrollTo({ top: contactPosition - navHeight * 2, left: 0, behavior: 'smooth' }),
   };
 
   return (

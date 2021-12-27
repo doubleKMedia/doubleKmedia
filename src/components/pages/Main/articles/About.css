@@ -2,7 +2,6 @@ article.about {
   position: relative;
 
   left: 0;
-  /* top: 150vh; */
   width: 100%;
   height: 1200px;
 
@@ -205,7 +204,7 @@ article.about section.about-2 > .organization .title {
 
 article.about section.about-1 > .history .since {
   font-size: 20px;
-  margin-left: 30vw;
+  margin-left: 20vw;
 }
 
 article.about section.about-1 > .history .since strong {
@@ -219,6 +218,46 @@ article.about section.about-2 > .organization .content {
 }
 
 article.about section.about-2 > .organization img {
-  width: 45%;
-  height: 65%;
+  width: 60%;
+  height: 60%;
+}
+
+@media (max-width: 650px) {
+  article.about section.about-2 > .organization .content {
+    font-size: 3vw;
+  }
+
+  article.about section.about-2 > .organization img {
+    width: 80%;
+    height: 50%;
+  }
+}
+
+@media (max-width: 450px) {
+  article.about section > span {
+    font-size: 7vw;
+  }
+
+  article.about section.pop.about-1::after,
+  article.about section.pop.about-2::after,
+  article.about section.about-1 > .history::after,
+  article.about section.about-2 > .organization::after {
+    font-size: 5vw;
+  }
+
+  article.about section.about-1 > .history .since {
+    display: flex;
+    flex-direction: column;
+  }
+
+  article.about section.about-2 > .organization .content {
+    width: 80%;
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  article.about section.about-2 > .organization img {
+    width: 90%;
+    height: 40%;
+  }
 }

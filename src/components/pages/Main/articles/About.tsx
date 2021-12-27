@@ -1,14 +1,22 @@
 import './About.css';
 import { scrollYAtom } from '../Main';
-import { useRecoilValue } from 'recoil';
+import { atom, useRecoilValue, useSetRecoilState } from 'recoil';
 import { createRef, useEffect, useState } from 'react';
+
+export const aboutPositionAtom = atom({ key: 'aboutPosition', default: 0 });
 
 const About = () => {
   const [isPop, setIsPop] = useState([false, false]);
   const [isHistory, setIsHistory] = useState(false);
   const [isOrganization, setIsOrganization] = useState(false);
+  const setAboutPosition = useSetRecoilState(aboutPositionAtom);
+  const aboutRef = createRef<HTMLElement>();
   const scrollY = useRecoilValue(scrollYAtom);
   const abouts = [createRef<HTMLElement>(), createRef<HTMLElement>()];
+
+  useEffect(() => {
+    setAboutPosition(aboutRef.current?.offsetTop as number);
+  }, []);
 
   useEffect(() => {
     setIsPop(
@@ -33,7 +41,7 @@ const About = () => {
   };
 
   return (
-    <article className="about">
+    <article className="about" ref={aboutRef}>
       <section className={`about-1 ${isPop[0] ? 'pop' : 'hide'} ${isHistory ? 'history' : ''}`} ref={abouts[0]} onClick={clickAbout.goHistory}>
         <div className="background" />
         <span>DOUBLE K MEDIA는</span>

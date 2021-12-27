@@ -50,8 +50,13 @@ article.service .ment span {
   font-size: 25px;
   font-weight: bold;
   line-height: 50px;
+  text-align: center;
 
   z-index: 1;
+}
+
+article.service .ment span br {
+  display: none;
 }
 
 article.service section {
@@ -154,4 +159,26 @@ article.service section.open .list .content {
 article.service section.sns-marketing,
 article.service section.online-homepage {
   cursor: auto;
+}
+
+@media (max-width: 900px) {
+  article.service .ment span br {
+    display: block;
+  }
+}
+
+@media (max-width: 550px) {
+  article.service .ment span {
+    font-size: 4vw;
+    line-height: 10vw;
+  }
+
+  article.service section .title {
+    font-size: 5vw;
+    line-height: 10vw;
+  }
+
+  article.service section .list {
+    font-size: 15px;
+  }
 }

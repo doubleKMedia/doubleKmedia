@@ -191,8 +191,14 @@ const Service = () => {
       <div className="background" />
       <div className="ment">
         <span>"더블케이미디어는</span>
-        <span>네이버, 카카오, 구글&유튜브, 오픈마켓(쿠팡, 11번가, 위메프, 옥션 등) 등의</span>
-        <span>"광고를 집행하는 광고주들의 온/오프라인 광고를 대행하여 진행하는</span>
+        <span>
+          네이버, 카카오, 구글&유튜브, <br />
+          오픈마켓(쿠팡, 11번가, 위메프, 옥션 등) 등의
+        </span>
+        <span>
+          광고를 집행하는 광고주들의 <br />
+          온/오프라인 광고를 대행하여 진행하는
+        </span>
         <span>
           <em>
             <strong>온라인 광고 대행사</strong>

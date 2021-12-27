@@ -27,10 +27,29 @@ article.contact .way-info {
   line-height: 40px;
   text-align: center;
 
+  margin: 0px 20px;
   margin-bottom: 20px;
 }
 
 article.contact .way-info strong.title {
   font-size: 23px;
   line-height: 60px;
+}
+
+@media (max-width: 600px) {
+  #map {
+    margin-bottom: 15px;
+  }
+
+  article.contact .way-info {
+    font-size: 14px;
+    line-height: 30px;
+
+    margin-bottom: 15px;
+  }
+
+  article.contact .way-info strong.title {
+    font-size: 18px;
+    line-height: 50px;
+  }
 }

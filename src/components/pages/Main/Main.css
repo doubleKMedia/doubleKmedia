@@ -44,6 +44,7 @@
 
 .main header span {
   font-size: 50px;
+  white-space: nowrap;
 }
 
 .main nav {
@@ -57,12 +58,13 @@
   box-sizing: border-box;
   background: #23223b;
   padding: 0 10%;
+
+  z-index: 200;
 }
 
 .main nav.fixed {
   position: fixed;
   top: 0;
-  z-index: 10;
 }
 
 .main nav button {
@@ -95,4 +97,71 @@
 .main footer button {
   color: aliceblue;
   margin: 5px 0px;
+}
+
+@media (max-width: 500px) {
+  .main header span {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main nav::before {
+    content: '';
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    right: 30px;
+    top: 30px;
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+    background: white;
+    background-image: url('./img/menu.svg');
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+
+    padding: 0;
+    z-index: 10;
+  }
+
+  .main nav:hover {
+    width: auto;
+    height: auto;
+
+    padding: 5%;
+  }
+
+  .main nav {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    right: 30px;
+    top: 100px !important;
+    width: 0;
+    height: 0;
+
+    box-sizing: border-box;
+    background: #23223bc9;
+
+    border-radius: 30px;
+    padding: 0;
+  }
+
+  .main nav button {
+    display: none;
+    line-height: 40px;
+  }
+
+  .main nav:hover button {
+    display: block;
+  }
 }
