@@ -49,11 +49,11 @@ const Navigator = () => {
 
   return (
     <nav className={`${isTop ? 'fixed' : ''}`} ref={nav}>
-      <button onClick={goScroll.home}>home</button>
-      <button onClick={goScroll.about}>about</button>
-      <button onClick={goScroll.service}>service</button>
-      <button>work</button>
-      <button onClick={goScroll.contact}>contact</button>
+      <button onClick={goScroll.home}>HOME</button>
+      <button onClick={goScroll.about}>ABOUT</button>
+      <button onClick={goScroll.service}>SERVICE</button>
+      <button>WORK</button>
+      <button onClick={goScroll.contact}>CONTACT</button>
     </nav>
   );
 };

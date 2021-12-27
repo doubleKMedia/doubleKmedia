@@ -199,12 +199,7 @@ const Service = () => {
           광고를 집행하는 광고주들의 <br />
           온/오프라인 광고를 대행하여 진행하는
         </span>
-        <span>
-          <em>
-            <strong>온라인 광고 대행사</strong>
-          </em>
-          입니다."
-        </span>
+        <span>온라인 광고 대행사 입니다."</span>
       </div>
       <Contents />
     </article>
